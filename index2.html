@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="cont">
+        <div id="edit" popover>
+            <div class="editButtons">
+                <img src="https://i.pravatar.cc/250?img=1">
+                <div>
+                    <button class="blueButton">Change picture</button>
+                    <button>Delete picture</button>
+                </div>
+            </div>
+            <div id="e">
+                <div id="name">
+                    <div>
+                        <p>Your first name</p>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <p>Your last name</p>
+                        <input type="text">
+                    </div>
+                </div>
+                <div>
+                    <p>Your email</p>
+                    <input type="text">
+                    <p>Your profession</p>
+                    <input type="text">
+                </div>
+                <div>
+                    <p>Bio</p>
+                    <textarea></textarea>
+                </div>
+
+                <button class="blueButton" style="width: 100%;">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #dddddd;
+        }
+
+        button {
+            border-radius: 10px;
+            padding: 1rem;
+            width: 140px;
+            border: 0;
+        }
+
+        .cont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #edit {
+            border: 0;
+            box-shadow: 10px 10px 15px #bbbbbb;
+            padding: 20px;
+            border-radius: 10px;
+            /* width: 274px; */
+            max-width: 500px;
+            margin: auto;
+        }
+
+        img {
+            border-radius: 50%;
+            width: calc(100% / 2.2);
+        }
+
+        .mCard {
+            width: 260px;
+            background: linear-gradient(180deg, rgb(63, 63, 255), 20%, blue, 40%, blue, 40%, white);
+            border-radius: 25px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 10px 10px 15px #bbbbbb;
+            text-align: center;
+        }
+
+        .mCard img {
+            margin: auto;
+            width: calc(100% / 3);
+            margin-top: 50px;
+            border: 5px solid white;
+        }
+
+        .mCard h1 {
+            font-weight: bold;
+        }
+
+        .mCard p {
+            color: gray;
+        }
+
+        .mCard button {
+            width: fit-content;
+            margin: auto;
+        }
+
+        .blueButton {
+            background-color: #293474;
+            color: white;
+        }
+
+        .editButtons {
+            display: flex;
+            margin-bottom: 20px;
+            justify-content: space-evenly;
+        }
+
+        .editButtons div {
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input,
+        textarea {
+            width: calc(100% - 24px);
+            padding: 10px;
+            resize: vertical;
+
+            background-color: lightblue;
+            border: 2px solid #293474;
+            border-radius: 5px;
+        }
+
+        #e {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #name {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 440px) {
+            #name {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+        }
+
+        /* 
+        @media (max-width: 440px) {
+            .editButtons {
+                flex-direction: column;
+            }
+        } */
+    </style>
+
+    <script>
+        const user = { name: "Kiss Éva", age: 28, email: "eva@example.com", avatar: "https://i.pravatar.cc/250?img=1", role: "Frontend fejlesztő" }
+        const genCard = (v) => {
+            return `
+            <div class="mCard">
+                <img src="${v.avatar}">
+                <h1> ${v.name}</h1>
+                <p>${v.email}</p>
+                <h4> ${v.role}</h4>
+                <button class="blueButton" popovertarget="edit">Profil Szerkesztése</button>
+            </div>
+            `;
+        }
+
+        document.querySelector(".cont").innerHTML += genCard(user);
+    </script>
+</body>
+
+</html>
